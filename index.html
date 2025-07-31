@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyPlanner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✨ StudyPlanner</h1>
+    <p>Organize seus estudos com estilo!</p>
+  </header>
+
+  <main>
+    <section id="disciplinas">
+      <h2>📚 Disciplinas</h2>
+      <input type="text" id="novaDisciplina" placeholder="Adicionar nova disciplina">
+      <button onclick="adicionarDisciplina()">Adicionar</button>
+      <ul id="listaDisciplinas"></ul>
+    </section>
+
+    <section id="tarefas">
+      <h2>✅ Tarefas</h2>
+      <div id="areaTarefas"></div>
+    </section>
+
+    <section id="planejamento">
+      <h2>🗓️ Planejamento Semanal</h2>
+      <div id="semana">
+        <!-- Dias da semana com tarefas -->
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
