@@ -45,3 +45,29 @@ button {
 button:hover {
   background-color: #4500b5;
 }
+
+.btn-excluir {
+  background-color: transparent;
+  color: red;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn-excluir:hover {
+  color: darkred;
+}
+
+.btn-excluir-tarefa {
+  background-color: transparent;
+  color: crimson;
+  border: none;
+  font-size: 0.9em;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.btn-excluir-tarefa:hover {
+  color: darkred;
+}

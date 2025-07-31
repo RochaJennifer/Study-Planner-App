@@ -19,12 +19,30 @@ function adicionarDisciplina() {
   renderDisciplinas();
 }
 
+function excluirDisciplina(index) {
+  const confirmar = confirm(`Tem certeza que deseja excluir a disciplina "${disciplinas[index].nome}"?`);
+  if (confirmar) {
+    disciplinas.splice(index, 1);
+    salvar();
+    renderDisciplinas();
+  }
+}
+
 function adicionarTarefa(index) {
   const tarefa = prompt("Digite a nova tarefa para " + disciplinas[index].nome);
   if (!tarefa) return;
   disciplinas[index].tarefas.push(tarefa);
   salvar();
   renderDisciplinas();
+}
+
+function excluirTarefa(iDisciplina, iTarefa) {
+  const confirmar = confirm(`Deseja excluir esta tarefa de "${disciplinas[iDisciplina].nome}"?`);
+  if (confirmar) {
+    disciplinas[iDisciplina].tarefas.splice(iTarefa, 1);
+    salvar();
+    renderDisciplinas();
+  }
 }
 
 function renderDisciplinas() {
@@ -35,12 +53,23 @@ function renderDisciplinas() {
 
   disciplinas.forEach((d, i) => {
     const li = document.createElement("li");
-    li.textContent = d.nome;
-    li.onclick = () => adicionarTarefa(i);
+    li.innerHTML = `
+  <span onclick="adicionarTarefa(${i})">${d.nome}</span>
+  <button onclick="excluirDisciplina(${i})" class="btn-excluir">🗑️</button>
+`;
+
     lista.appendChild(li);
 
-    const bloco = document.createElement("div");
-    bloco.innerHTML = `<h3>${d.nome}</h3><ul>${d.tarefas.map(t => `<li>${t}</li>`).join('')}</ul>`;
+   const tarefasHTML = d.tarefas.map((tarefa, j) => `
+  <li>
+    ${tarefa}
+    <button onclick="excluirTarefa(${i}, ${j})" class="btn-excluir-tarefa">🗑️</button>
+  </li>
+`).join('');
+
+const bloco = document.createElement("div");
+bloco.innerHTML = `<h3>${d.nome}</h3><ul>${tarefasHTML}</ul>`;
+
     areaTarefas.appendChild(bloco);
   });
 }
