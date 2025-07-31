@@ -1,3 +1,12 @@
+const coresDisciplinas = [
+  '#ff6f61', // vermelho coral
+  '#6c5ce7', // roxo
+  '#00b894', // verde água
+  '#0984e3', // azul
+  '#fdcb6e', // amarelo
+  '#e17055'  // laranja
+];
+
 let disciplinas = JSON.parse(localStorage.getItem("disciplinas")) || [];
 
 function salvar() {
@@ -68,7 +77,11 @@ function renderDisciplinas() {
 `).join('');
 
 const bloco = document.createElement("div");
-bloco.innerHTML = `<h3>${d.nome}</h3><ul>${tarefasHTML}</ul>`;
+const cor = coresDisciplinas[i % coresDisciplinas.length]; // roda o array
+bloco.className = 'bloco-disciplina';
+bloco.style.borderLeft = `10px solid ${cor}`;
+bloco.innerHTML = `<h3 style=\"color:${cor}\">${d.nome}</h3><ul>${tarefasHTML}</ul>`;
+
 
     areaTarefas.appendChild(bloco);
   });
